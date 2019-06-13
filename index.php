@@ -12,14 +12,11 @@
       // badword passata in GET con tre *.
 
       // testo iniziale
-      $testo = ' Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-      Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+      $testo = ' Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
 
       // per calcolare il numero di parole del testo
       $n_parole_testo = str_word_count($testo);
-      // per calcolare il numero di caratteri del testo
+      // per calcolare il numero di caratteri del testo (-1 perchè lascio uno spazio davanti al testo che mi servirà per la posizione)
       $n_caratteri_testo = (strlen($testo)-1);
     ?>
 
@@ -37,6 +34,7 @@
       if(strlen($parola_da_censurare) > 0){
         // per vedere se la parola che ha inserito l'utente è presente nel testo
         if(strpos($testo_copy, $parola_da_censurare)){
+          // oppure str_ireplace (per cose case insensitive)
           $testo_copy = str_replace($parola_da_censurare, '***', $testo_copy);
           echo '<br><br><h3>Testo modificato con la parola da censurare</h3>' . $testo_copy;
         } else {
